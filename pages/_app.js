@@ -8,6 +8,7 @@ import { authenticatedFetch } from "@shopify/app-bridge-utils";
 import "@shopify/polaris/dist/styles.css";
 import translations from "@shopify/polaris/locales/en.json";
 
+
 function MyProvider(props) {
   const app = useAppBridge();
 
