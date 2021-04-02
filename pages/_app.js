@@ -7,9 +7,13 @@ import { Provider, useAppBridge } from "@shopify/app-bridge-react";
 import { authenticatedFetch } from "@shopify/app-bridge-utils";
 import "@shopify/polaris/dist/styles.css";
 import translations from "@shopify/polaris/locales/en.json";
+import { Redirect } from '@shopify/app-bridge/actions';
+
 
 
 function MyProvider(props) {
+
+
   const app = useAppBridge();
 
   const client = new ApolloClient({
@@ -20,6 +24,12 @@ function MyProvider(props) {
   });
 
   const Component = props.Component;
+
+
+  app.subscribe(Redirect.Action.APP, function (redirectData) {
+    console.log(redirectData.path); // For example, '/settings'
+  });
+
 
   return (
     <ApolloProvider client={client}>
